@@ -1,7 +1,6 @@
-// Masukkan URL API Google Cloud milikmu di sini
 const API_URL = 'https://project-tcc06.uc.r.appspot.com/api/notes';
 
-// Elemen HTML yang akan kita kendalikan
+
 const form = document.getElementById('form-catatan');
 const inputId = document.getElementById('note-id');
 const inputJudul = document.getElementById('judul');
@@ -16,11 +15,11 @@ async function tampilkanCatatan() {
         const response = await fetch(API_URL);
         const notes = await response.json();
         
-        daftarCatatan.innerHTML = ''; // Kosongkan daftar sebelum diisi ulang
+        daftarCatatan.innerHTML = '';
         
         notes.forEach(note => {
             const div = document.createElement('div');
-            div.className = 'note-card'; // Kamu bisa hias ini di style.css
+            div.className = 'note-card'; 
             div.innerHTML = `
                 <h3>${note.judul}</h3>
                 <p>${note.isi}</p>
@@ -45,7 +44,7 @@ form.addEventListener('submit', async (e) => {
     const judul = inputJudul.value;
     const isi = inputIsi.value;
     
-    // Jika ada ID, berarti kita sedang Update (PUT). Jika tidak, berarti Tambah baru (POST)
+    
     const method = id ? 'PUT' : 'POST';
     const url = id ? `${API_URL}/${id}` : API_URL;
 
@@ -57,7 +56,7 @@ form.addEventListener('submit', async (e) => {
         });
         
         resetForm();
-        tampilkanCatatan(); // Refresh daftar secara otomatis
+        tampilkanCatatan();
     } catch (error) {
         console.error('Gagal menyimpan data:', error);
     }
@@ -68,7 +67,7 @@ async function hapusCatatan(id) {
     if (confirm('Yakin ingin menghapus catatan ini?')) {
         try {
             await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-            tampilkanCatatan(); // Refresh daftar
+            tampilkanCatatan(); 
         } catch (error) {
             console.error('Gagal menghapus data:', error);
         }
@@ -81,9 +80,9 @@ function siapkanEdit(id, judul, isi) {
     inputJudul.value = judul;
     inputIsi.value = isi;
     
-    btnSubmit.innerText = '💾 Update Catatan'; // Ubah teks tombol
-    btnCancel.style.display = 'inline-block'; // Munculkan tombol batal
-    window.scrollTo(0, 0); // Scroll otomatis ke atas
+    btnSubmit.innerText = '💾 Update Catatan'; 
+    btnCancel.style.display = 'inline-block'; 
+    window.scrollTo(0, 0); 
 }
 
 // Fungsi pembantu untuk mereset formulir
