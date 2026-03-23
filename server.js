@@ -42,8 +42,8 @@ app.get('/api/notes', (req, res) => {
 
 // --- FITUR EDIT (UPDATE) ---
 app.put('/api/notes/:id', (req, res) => {
-    const id = req.params.id; // Mengambil ID dari URL
-    const { judul, isi } = req.body; // Mengambil data baru dari body request
+    const id = req.params.id; 
+    const { judul, isi } = req.body; 
 
     const query = "UPDATE notes SET judul = ?, isi = ? WHERE id = ?";
     
@@ -53,7 +53,7 @@ app.put('/api/notes/:id', (req, res) => {
             return res.status(500).json({ error: "Gagal mengedit catatan di database" });
         }
         
-        // Jika ID tidak ditemukan di database
+        
         if (results.affectedRows === 0) {
             return res.status(404).json({ message: "Catatan tidak ditemukan!" });
         }
@@ -64,7 +64,7 @@ app.put('/api/notes/:id', (req, res) => {
 
 // --- FITUR HAPUS (DELETE) ---
 app.delete('/api/notes/:id', (req, res) => {
-    const id = req.params.id; // Mengambil ID dari URL
+    const id = req.params.id; 
 
     const query = "DELETE FROM notes WHERE id = ?";
     
