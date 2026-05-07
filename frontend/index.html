@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Catatan Cloud</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Catatan Ku</h1>
+        
+        <form id="form-catatan">
+            <input type="hidden" id="note-id"> <input type="text" id="judul" placeholder="Judul Catatan..." required>
+            <textarea id="isi" placeholder="Tulis isinya di sini..." required></textarea>
+            <button type="submit" id="btn-submit">Tambah Catatan</button>
+            <button type="button" id="btn-cancel" style="display: none;">Batal Edit</button>
+        </form>
+
+        <div id="daftar-catatan">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
